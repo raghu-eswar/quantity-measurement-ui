@@ -3,14 +3,17 @@ import '../styles/quantity.css'
 
 class Quantity extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {isActive:(this.props.quantity.name===this.props.activeUnit)}
+    componentDidMount() {
+        if(this.props.isActive) {
+            this.refs[`${this.props.quantity.name}`].classList.add(`${this.props.quantity.name}-active`);
+        }
     }
 
-    componentDidMount() {
-        if(this.state.isActive) {
-            this.refs[`${this.props.quantity.name}`].focus();
+    componentDidUpdate() {
+        if(this.props.isActive) {
+            this.refs[`${this.props.quantity.name}`].classList.add(`${this.props.quantity.name}-active`);
+        } else {
+            this.refs[`${this.props.quantity.name}`].classList.remove(`${this.props.quantity.name}-active`);
         }
     }
 

@@ -20,7 +20,7 @@ class Home extends Component {
                 <div id="home-content">
                 <span>Choose type</span>
                     <div id="home-content-quantities">
-                        {this.props.quantities.map(quantity=><Quantity quantity={quantity} activeUnit={this.state.activeUnit.name} key={quantity.name} onlick={this.selectUnit}></Quantity>)}
+                        {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeUnit.name===quantity.name} key={quantity.name} onlick={this.selectUnit}></Quantity>)}
                     </div>
                     <div id="home-content-values">
                         <UnitValues unitType="from" units={this.state.activeUnit.units}></UnitValues>

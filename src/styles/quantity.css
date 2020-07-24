@@ -26,7 +26,7 @@
 }
 
 #length:hover,
-#length:focus {
+.length-active {
     color: #0EC098;
     font-weight: 600;
     background: #EDFDF9 0% 0% no-repeat padding-box;
@@ -36,12 +36,12 @@
 }
 
 #length:hover div,
-#length:focus div {
-    background: transparent url('../images/length-hover-icon.svg') 0% 0% no-repeat padding-box;
+.length-active div {
+    background: transparent url('../images/length-hover-icon.svg') 0% 0% no-repeat padding-box !important;
 }
 
 #length:hover p,
-#length:focus p {
+.length-active p {
     opacity: 1;
 }
 
@@ -55,7 +55,7 @@
 }
 
 #temperature:hover,
-#temperature:focus {
+.temperature-active {
     color: #FD5160;
     font-weight: 600;
     background: #FFEEF0 0% 0% no-repeat padding-box;
@@ -65,12 +65,12 @@
 }
 
 #temperature:hover div,
-#temperature:focus div {
-    background: transparent url('../images/temperature-hover-icon.svg') 0% 0% no-repeat padding-box;
+.temperature-active div {
+    background: transparent url('../images/temperature-hover-icon.svg') 0% 0% no-repeat padding-box !important;
 }
 
 #temperature:hover p,
-#temperature:focus p {
+.temperature-active p {
     opacity: 1;
 }
 
@@ -84,7 +84,7 @@
 }
 
 #volume:hover,
-#volume:focus {
+.volume-active {
     color: #7224FF;
     font-weight: 600;
     background: #E8DDFF 0% 0% no-repeat padding-box;
@@ -94,11 +94,11 @@
 }
 
 #volume:hover div,
-#volume:focus div {
-    background: transparent url('../images/volume-hover-icon.svg') 0% 0% no-repeat padding-box;
+.volume-active div {
+    background: transparent url('../images/volume-hover-icon.svg') 0% 0% no-repeat padding-box !important;
 }
 
 #volume:hover p,
-#volume:focus p {
+.volume-active p {
     opacity: 1;
 }

@@ -1,0 +1,104 @@
+.quantity {
+    width: 20%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    color: #000000;
+    font-family: Montserrat;
+    font: caption;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.quantity>p {
+    opacity: 0.2;
+}
+
+#length>div {
+    width: 10%;
+    height: 40%;
+    background: transparent url('../images/length-icon.svg') 0% 0% no-repeat padding-box;
+}
+
+#length:hover,
+#length:focus {
+    color: #0EC098;
+    font-weight: 600;
+    background: #EDFDF9 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #0EC098;
+    border-radius: 7px;
+}
+
+#length:hover div,
+#length:focus div {
+    background: transparent url('../images/length-hover-icon.svg') 0% 0% no-repeat padding-box;
+}
+
+#length:hover p,
+#length:focus p {
+    opacity: 1;
+}
+
+#temperature>div {
+    width: 25%;
+    height: 50%;
+}
+
+#temperature>div {
+    background: transparent url('../images/temperature-icon.svg') 0% 0% no-repeat padding-box;
+}
+
+#temperature:hover,
+#temperature:focus {
+    color: #FD5160;
+    font-weight: 600;
+    background: #FFEEF0 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #FD5160;
+    border-radius: 7px;
+}
+
+#temperature:hover div,
+#temperature:focus div {
+    background: transparent url('../images/temperature-hover-icon.svg') 0% 0% no-repeat padding-box;
+}
+
+#temperature:hover p,
+#temperature:focus p {
+    opacity: 1;
+}
+
+#volume>div {
+    width: 35%;
+    height: 50%;
+}
+
+#volume>div {
+    background: transparent url('../images/volume-icon.svg') 0% 0% no-repeat padding-box;
+}
+
+#volume:hover,
+#volume:focus {
+    color: #7224FF;
+    font-weight: 600;
+    background: #E8DDFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #7224FF;
+    border-radius: 7px;
+}
+
+#volume:hover div,
+#volume:focus div {
+    background: transparent url('../images/volume-hover-icon.svg') 0% 0% no-repeat padding-box;
+}
+
+#volume:hover p,
+#volume:focus p {
+    opacity: 1;
+}

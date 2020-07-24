@@ -1,4 +1,17 @@
 {
-    "compamyName": "Quanment",
-    "navigation": { "name": "History", "link": "/history" }
+    "appName": "Quanment",
+    "navigation": { "name": "History", "link": "/history" },
+    "quantities": [{
+            "name": "length",
+            "units": ["Kilometer", "Meter", "Centimeter", "Millimeter", "Micrometer", "Mile"]
+        },
+        {
+            "name": "temperature",
+            "units": ["Celsius", "Fahrenheit", "Kelvin"]
+        },
+        {
+            "name": "volume",
+            "units": ["Litres", "Milliliters", "Gallons"]
+        }
+    ]
 }

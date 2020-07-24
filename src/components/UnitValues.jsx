@@ -5,7 +5,7 @@ function unitValues(props) {
     return ( 
         <div id="unit">
             <span>{props.unitType}</span>
-            <input id="unit-value"/>
+            <input className="unit-value"/>
             <select id="unit-types">
                 {props.units.map(unit=><option value={unit}>{unit}</option>)}
             </select>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../styles/home.css'
-import Quantity from './Quantity.jsx'
-import UnitValues from './UnitValues.jsx'
+import Quantity from '../components/Quantity.jsx'
+import UnitValues from '../components/UnitValues.jsx'
 
 class Home extends Component {
     constructor(props) {

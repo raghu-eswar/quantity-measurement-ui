@@ -11,7 +11,7 @@
     flex: 1;
 }
 
-#unit-value {
+.unit-value {
     width: 100%;
     flex: 2;
     background: #E8DDFF 0% 0% no-repeat padding-box;

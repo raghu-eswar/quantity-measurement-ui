@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Header name={appData.appName} navLinks={appData.navigation}></Header>
-      <Route path="/">
+      <Route path="/" exact>
         <Home quantities={appData.quantities}></Home>
       </Route>
     </Router> 

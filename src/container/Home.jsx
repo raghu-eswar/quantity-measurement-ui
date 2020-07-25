@@ -6,12 +6,14 @@ import UnitValues from '../components/UnitValues.jsx'
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {activeUnit:this.props.quantities[0]}
-        this.selectUnit = this.selectUnit.bind(this);
+        this.state = {  
+                        activeQuantity:this.props.quantities[0],
+                        activeUnit: this.props.quantities[0].units[0]
+                    }
     }
 
-    selectUnit(unit) {
-        this.setState({activeUnit:unit})
+    selectQuantity = (quantity) => {
+        this.setState({activeQuantity:quantity})
     }
 
     render() {
@@ -20,11 +22,11 @@ class Home extends Component {
                 <div id="home-content">
                 <span>Choose type</span>
                     <div id="home-content-quantities">
-                        {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeUnit.name===quantity.name} key={quantity.name} onlick={this.selectUnit}></Quantity>)}
+                        {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeQuantity.name===quantity.name} key={quantity.name} onlick={this.selectQuantity}></Quantity>)}
                     </div>
                     <div id="home-content-values">
-                        <UnitValues unitType="from" units={this.state.activeUnit.units}></UnitValues>
-                        <UnitValues unitType="to" units={this.state.activeUnit.units}></UnitValues>
+                        <UnitValues unitType="from" units={this.state.activeQuantity.units}></UnitValues>
+                        <UnitValues unitType="to" units={this.state.activeQuantity.units} activeUnit={this.state.activeUnit}></UnitValues>
                     </div>
                 </div>
             </main>

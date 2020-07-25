@@ -16,6 +16,10 @@ class Home extends Component {
         this.setState({activeQuantity:quantity})
     }
 
+    selectUnit = (unit) => {
+        this.setState({activeUnit:unit})
+    }
+
     render() {
         return ( 
             <main id="home">
@@ -25,7 +29,7 @@ class Home extends Component {
                         {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeQuantity.name===quantity.name} key={quantity.name} onlick={this.selectQuantity}></Quantity>)}
                     </div>
                     <div id="home-content-values">
-                        <UnitValues unitType="from" units={this.state.activeQuantity.units}></UnitValues>
+                        <UnitValues unitType="from" units={this.state.activeQuantity.units} onchange={this.selectUnit}></UnitValues>
                         <UnitValues unitType="to" units={this.state.activeQuantity.units} activeUnit={this.state.activeUnit}></UnitValues>
                     </div>
                 </div>

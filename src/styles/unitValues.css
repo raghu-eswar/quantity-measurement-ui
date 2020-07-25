@@ -5,16 +5,23 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
+    font-family: Montserrat;
+    font: caption;
+    letter-spacing: 0px;
+    color: #000000;
 }
 
 #unit>span {
     flex: 1;
+    text-transform: uppercase;
 }
 
 .unit-value {
     width: 100%;
     flex: 2;
-    background: #E8DDFF 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #E5DAFC;
+    outline: none;
 }
 
 #unit-types {
@@ -23,4 +30,6 @@
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #E7DCFE;
     border-radius: 3px;
+    text-transform: capitalize;
+    outline: none;
 }

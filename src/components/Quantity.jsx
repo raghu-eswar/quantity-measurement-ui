@@ -9,7 +9,7 @@ class Quantity extends Component {
 
     render() {
         return ( 
-            <button ref={this.props.quantity.name} className={this.props.isActive ? `quantity ${this.props.quantity.name}-active` : `quantity`} 
+            <button className={this.props.isActive ? `quantity ${this.props.quantity.name}-active` : `quantity`} 
                     id={this.props.quantity.name} onClick={this.props.onlick.bind(this, this.props.quantity)}>
                 <div></div>
                 <p>{this.props.quantity.name}</p>

@@ -13,17 +13,28 @@ class Home extends Component {
         this.unitOptionsRef = {from:React.createRef(), to:React.createRef()};
     }
 
+    componentDidMount() {
+        this.updateHistory()
+    }
+
+    componentDidUpdate() {
+        this.updateHistory()
+    }    
+
     selectQuantity = (quantity, ref) => {
         this.setState({activeQuantity:quantity,
                         activeUnit: quantity.units[0]})
-        for (const property in this.unitOptionsRef) {
-           this.unitOptionsRef[property].current.selectedIndex = 0;
-        }
+        this.unitOptionsRef["from"].current.selectedIndex = 0;
     }
 
     selectUnit = (unit) => {
         this.setState({activeUnit:unit})
     }
+
+    updateHistory = () => {
+        this.props.updateHistory({name:this.state.activeQuantity.name,fromUnit:this.state.activeUnit, toUnit:this.unitOptionsRef.to.current.value})        
+    }
+
 
     render() {
         return ( 

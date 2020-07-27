@@ -6,10 +6,9 @@ function UnitValues(props) {
         <div id="unit">
             <span>{props.unitType}</span>
             <input type="number" className="unit-value"/>
-            <select id="unit-types" ref={props._ref[props.unitType]} 
-                onChange={props.onchange ? (event) =>props.onchange(event.target.children[event.target.selectedIndex].value) : null}>
+            <select id="unit-types" ref={props._ref[props.unitType]} onChange={props.onchange}>
                 {props.units.map(unit=> {
-                    if(unit !== props.activeUnit)
+                    if(unit !== props.fromUnit)
                         return <option value={unit}>{unit}</option>
                     return null;
                 })}

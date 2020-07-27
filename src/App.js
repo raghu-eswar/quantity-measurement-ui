@@ -15,7 +15,6 @@ function App() {
   const updateHistory = (record) => {
     history[record.name].push(record);
   }
-  
 
   return (
     <Router>

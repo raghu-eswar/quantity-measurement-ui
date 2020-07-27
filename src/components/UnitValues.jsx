@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/unitValues.css'
 
-function unitValues(props) {
+function UnitValues(props) {
     return ( 
         <div id="unit">
             <span>{props.unitType}</span>
@@ -17,4 +17,4 @@ function unitValues(props) {
         </div>
     );
 }
-export default unitValues;
+export default UnitValues;

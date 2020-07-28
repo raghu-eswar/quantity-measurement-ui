@@ -30,7 +30,7 @@ class Home extends Component {
     }
 
     selectUnits = () => {
-        this.setState({fromUnit:this.unitOptionsRef.from.value, toUnit:this.unitOptionsRef.to.value})
+        this.setState({fromUnit:this.unitOptionsRef.from.current.value, toUnit:this.unitOptionsRef.to.current.value})
     }
 
     updateHistory = () => {

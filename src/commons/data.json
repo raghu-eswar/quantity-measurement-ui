@@ -3,15 +3,27 @@
     "navigation": { "name": "History", "link": "/history" },
     "quantities": [{
             "name": "length",
-            "units": ["Kilometer", "Meter", "Centimeter", "Millimeter", "Micrometer", "Mile"]
+            "units": ["Kilometer", "Meter", "Centimeter", "Millimeter", "Micrometer", "Mile"],
+            "styles": { 
+                        "color": "#0EC098",
+                        "backgroundColor": "#EDFDF9"
+            }
         },
         {
             "name": "temperature",
-            "units": ["Celsius", "Fahrenheit", "Kelvin"]
+            "units": ["Celsius", "Fahrenheit", "Kelvin"],
+            "styles": { 
+                        "color": "#FD5160",
+                        "backgroundColor": "#FFEEF0"
+            }
         },
         {
             "name": "volume",
-            "units": ["Litres", "Milliliters", "Gallons"]
+            "units": ["Litres", "Milliliters", "Gallons"],
+            "styles": { 
+                        "color": "#7224FF",
+                        "backgroundColor": "#E8DDFF"
+            }
         }
     ]
 }

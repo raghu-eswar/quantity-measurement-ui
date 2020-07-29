@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../styles/quantity.css'
+import * as Styled from '../styles/quantity.styled';
 
 class Quantity extends Component {
 
@@ -9,11 +9,12 @@ class Quantity extends Component {
 
     render() {
         return ( 
-            <button className={this.props.isActive ? `quantity ${this.props.quantity.name}-active` : `quantity`} 
-                    id={this.props.quantity.name} onClick={this.props.onlick.bind(this, this.props.quantity)}>
-                <div></div>
-                <p>{this.props.quantity.name}</p>
-            </button>
+            <Styled.Quantity onClick={this.props.onlick.bind(this, this.props.quantity)} quantityName={this.props.quantity.name} styles={this.props.quantity.styles} isActive={this.props.isActive}>
+                <Styled.StyledDiv quantityName={this.props.quantity.name} isActive={this.props.isActive}/>
+                <Styled.QuantityName isActive={this.props.isActive}>
+                    {this.props.quantity.name}
+                </Styled.QuantityName>
+            </Styled.Quantity>
         );
     }
 }

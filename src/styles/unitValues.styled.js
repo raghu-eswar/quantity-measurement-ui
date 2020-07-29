@@ -1,4 +1,6 @@
-#unit {
+import styled from 'styled-components';
+
+export const UnitContainer = styled.div `
     width: 35%;
     height: 100%;
     display: flex;
@@ -9,14 +11,14 @@
     font: caption;
     letter-spacing: 0px;
     color: #000000;
-}
+`
 
-#unit>span {
+export const Title = styled.span `
     flex: 1;
     text-transform: uppercase;
-}
+`
 
-.unit-value {
+export const UnitValue = styled.input `
     width: 100%;
     flex: 2;
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -24,14 +26,14 @@
     outline: none;
     font-size: larger;
     text-indent: 5%;
-}
-
-#unit-types {
+`
+export const UnitTypes = styled.select `
     width: 100%;
     flex: 2;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #E7DCFE;
     border-radius: 3px;
     text-transform: capitalize;
-    outline: none;
-}
+    outline: none;  
+    cursor: pointer;  
+`

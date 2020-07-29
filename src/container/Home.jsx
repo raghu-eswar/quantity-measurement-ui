@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import '../styles/home.css'
 import Quantity from '../components/Quantity.jsx'
 import UnitValues from '../components/UnitValues.jsx'
+import * as Styled from '../styles/home.styled';
 
 class Home extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class Home extends Component {
         this.updateHistory()
     }    
 
-    selectQuantity = (quantity, ref) => {
+    selectQuantity = (quantity) => {
         this.setState({activeQuantity:quantity,
                         fromUnit: quantity.units[0],
                         toUnit: quantity.units[1]})
@@ -40,18 +40,18 @@ class Home extends Component {
 
     render() {
         return ( 
-            <main id="home">
-                <div id="home-content">
-                <span>Choose type</span>
-                    <div id="home-content-quantities">
+            <Styled.Home>
+                <Styled.Content>
+                    <Styled.Title>Choose type</Styled.Title>
+                    <Styled.Quantities>
                         {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeQuantity.name===quantity.name} key={quantity.name} onlick={this.selectQuantity}></Quantity>)}
-                    </div>
-                    <div id="home-content-values">
+                    </Styled.Quantities>
+                    <Styled.QuantityValues>
                         <UnitValues unitType="from" units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onchange={this.selectUnits}></UnitValues>
                         <UnitValues unitType="to" units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onchange={this.selectUnits} fromUnit={this.state.fromUnit}></UnitValues>
-                    </div>
-                </div>
-            </main>
+                    </Styled.QuantityValues>
+                </Styled.Content>
+            </Styled.Home>
         );
     }
 }

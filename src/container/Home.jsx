@@ -6,21 +6,26 @@ import * as Styled from '../styles/home.styled';
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {  
-                        activeQuantity:this.props.quantities[0],
-                        fromUnit: this.props.quantities[0].units[0],
-                        toUnit: this.props.quantities[0].units[1]
-                    };
+        this.state = {  isLoading:true };
         this.unitOptionsRef = {from:React.createRef(), to:React.createRef()};
     }
 
     componentDidMount() {
-        this.updateHistory()
+        this.props.initapp(this.props.quantities, this.updateLoadingState)
     }
 
     componentDidUpdate() {
         this.updateHistory()
     }    
+
+    updateLoadingState = () => {
+        this.setState({
+            isLoading:false,
+            activeQuantity:this.props.quantities[0],
+            fromUnit: this.props.quantities[0].units[0],
+            toUnit: this.props.quantities[0].units[1]
+        })
+    }
 
     selectQuantity = (quantity) => {
         this.setState({activeQuantity:quantity,
@@ -38,6 +43,22 @@ class Home extends Component {
     }
 
     render() {
+        if(this.state.isLoading){
+            return(
+                <>
+                    <Styled.Loader delay={'0s'}></Styled.Loader>
+                    <Styled.Loader delay={'0.3s'}></Styled.Loader>
+                    <Styled.Loader delay={'0.6s'}></Styled.Loader>
+                    <Styled.Loader delay={'0.9s'}></Styled.Loader>
+                    <Styled.Loader delay={'1.2s'}></Styled.Loader>
+                    <Styled.Loader delay={'1.5s'}></Styled.Loader>
+                    <Styled.Loader delay={'1.8s'}></Styled.Loader>
+                    <Styled.Loader delay={'2.1s'}></Styled.Loader>
+                    <Styled.Loader delay={'2.4s'}></Styled.Loader>
+                    <Styled.Loader delay={'2.7s'}></Styled.Loader>                    
+                </>
+            )
+        }
         return ( 
             <Styled.Home>
                 <Styled.Content>

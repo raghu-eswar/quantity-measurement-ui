@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Quantity from '../components/Quantity.jsx'
 import UnitValues from '../components/UnitValues.jsx'
 import * as Styled from '../styles/home.styled';
+import Api from '../service/api'
 
 class Home extends Component {
     constructor(props) {
@@ -23,15 +24,23 @@ class Home extends Component {
             isLoading:false,
             activeQuantity:this.props.quantities[0],
             fromUnit: this.props.quantities[0].units[0],
-            toUnit: this.props.quantities[0].units[1]
+            toUnit: this.props.quantities[0].units[1],
+            fromValue: 0,
+            toValue: 0
         })
     }
 
     selectQuantity = (quantity) => {
-        this.setState({activeQuantity:quantity,
-                        fromUnit: quantity.units[0],
-                        toUnit: quantity.units[1]})
+        Api.getConvertedUnit(quantity.units[0], 0 ,quantity.units[1])
+            .then(resp => 
+                this.setState({ activeQuantity:quantity,
+                fromUnit: quantity.units[0],
+                toUnit: quantity.units[1],
+                fromValue:0,
+                toValue:resp.data.value.value
+                }))
         this.unitOptionsRef["from"].current.selectedIndex = 0;
+        this.unitOptionsRef["to"].current.selectedIndex = 0;
     }
 
     selectUnits = () => {
@@ -67,8 +76,8 @@ class Home extends Component {
                         {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeQuantity.name===quantity.name} key={quantity.name} onlick={this.selectQuantity}></Quantity>)}
                     </Styled.Quantities>
                     <Styled.QuantityValues>
-                        <UnitValues unitType="from" units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onchange={this.selectUnits}></UnitValues>
-                        <UnitValues unitType="to" units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onchange={this.selectUnits} fromUnit={this.state.fromUnit}></UnitValues>
+                        <UnitValues unitType="from" value={this.state.fromValue} units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onchange={this.selectUnits}></UnitValues>
+                        <UnitValues unitType="to" value={this.state.toValue} units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onchange={this.selectUnits} fromUnit={this.state.fromUnit}></UnitValues>
                     </Styled.QuantityValues>
                 </Styled.Content>
             </Styled.Home>

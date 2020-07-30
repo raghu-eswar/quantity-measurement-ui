@@ -7,7 +7,7 @@ function UnitValues(props) {
             <Styled.Title>
                 {props.unitType}
             </Styled.Title>
-            <Styled.UnitValue type="number"/>
+            <Styled.UnitValue value={props.value} type="number"/>
             <Styled.UnitTypes ref={props._ref[props.unitType]} onChange={props.onchange}>
                 {props.units.map(unit=> {
                     if(unit !== props.fromUnit)

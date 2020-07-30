@@ -37,7 +37,6 @@ class Home extends Component {
         this.props.updateHistory({name:this.state.activeQuantity.name,fromUnit:this.state.fromUnit, toUnit:this.state.toUnit})        
     }
 
-
     render() {
         return ( 
             <Styled.Home>

@@ -5,7 +5,6 @@ export const QuantityName = styled.p `
     font-weight: ${props=> props.isActive ? 600: 100};
 `
 
-
 export const StyledDiv = styled.div `
     width: 35%;
     height: 50%;
@@ -40,5 +39,4 @@ export const Quantity = styled.div `
     &:hover ${StyledDiv} {
         background: transparent url(${props=>require(`../images/${props.quantityName}-hover-icon.svg`)}) no-repeat center;   
     }
-
 `

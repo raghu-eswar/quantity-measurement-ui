@@ -24,6 +24,14 @@
                         "color": "#7224FF",
                         "backgroundColor": "#E8DDFF"
             }
+        },
+        {
+            "name": "weight",
+            "units": ["Kilogram", "Gram", "Milligram"],
+            "styles": { 
+                        "color": "#ff8c00",
+                        "backgroundColor": "#fef9f2"
+            }
         }
     ]
 }

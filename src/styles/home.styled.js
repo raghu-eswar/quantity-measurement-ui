@@ -21,7 +21,7 @@ export const Title = styled.span `
     font-size: medium;
     color: #000000;
     text-transform: uppercase;
-    margin-left: 10%;
+    margin-left: 4%;
 `
 
 export const Quantities = styled.div `

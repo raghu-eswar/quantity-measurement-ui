@@ -51,6 +51,26 @@ class Home extends Component {
         this.props.updateHistory({name:this.state.activeQuantity.name,fromUnit:this.state.fromUnit, toUnit:this.state.toUnit})        
     }
 
+    convertUnits = (event) => {
+        let isFrom = event.target.parentElement.id  === 'from'
+        let value = event.target.value;
+        if(value-0 > 0) {
+            let fromUnit = (isFrom)? this.state.fromUnit : this.state.toUnit;
+            let toUnit = (isFrom)? this.state.toUnit : this.state.fromUnit;
+            Api.getConvertedUnit(fromUnit, value ,toUnit)
+            .then(resp => 
+                    this.setState({ 
+                    fromValue:(isFrom)? value : resp.data.value.value,
+                    toValue: (isFrom)? resp.data.value.value : value
+                }))
+        }
+        else {
+            this.setState({ 
+                fromValue:'',
+                toValue:''})
+        }
+    }
+
     render() {
         if(this.state.isLoading){
             return(
@@ -76,8 +96,8 @@ class Home extends Component {
                         {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeQuantity.name===quantity.name} key={quantity.name} onlick={this.selectQuantity}></Quantity>)}
                     </Styled.Quantities>
                     <Styled.QuantityValues>
-                        <UnitValues unitType="from" value={this.state.fromValue} units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onchange={this.selectUnits}></UnitValues>
-                        <UnitValues unitType="to" value={this.state.toValue} units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onchange={this.selectUnits} fromUnit={this.state.fromUnit}></UnitValues>
+                        <UnitValues unitType="from" value={this.state.fromValue} units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onValueChange = {this.convertUnits} onUnitChange={this.selectUnits}></UnitValues>
+                        <UnitValues unitType="to" value={this.state.toValue} units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onValueChange = {this.convertUnits} onUnitChange={this.selectUnits} fromUnit={this.state.fromUnit}></UnitValues>
                     </Styled.QuantityValues>
                 </Styled.Content>
             </Styled.Home>

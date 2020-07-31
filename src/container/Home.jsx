@@ -44,12 +44,19 @@ class Home extends Component {
         this.unitOptionsRef["to"].current.selectedIndex = 0;
     }
 
-    selectUnits = (event) => {
-        this.setState({fromUnit:this.unitOptionsRef.from.current.value, toUnit:this.unitOptionsRef.to.current.value})
+    unitSelectionHandler = (event) => {
+        let newToUnit ="";
+        if(this.unitOptionsRef.from.current.value === this.unitOptionsRef.to.current.value) {
+            newToUnit = (this.state.activeQuantity.units[0] ===  this.unitOptionsRef.from.current.value)? this.state.activeQuantity.units[1] : this.state.activeQuantity.units[0];
+            setTimeout(()=>this.unitOptionsRef['to'].current.selectedIndex = 0, 0);
+        } else {
+            newToUnit = this.unitOptionsRef.to.current.value
+        }
+        this.setState({fromUnit:this.unitOptionsRef.from.current.value, toUnit:newToUnit})
         let isFrom = event.target.parentElement.id  !== 'from'
         let value = (isFrom)? this.unitValueRef['from'].current.value : this.unitValueRef['to'].current.value;
-        let fromUnit = (isFrom)? this.unitOptionsRef.from.current.value : this.unitOptionsRef.to.current.value;
-        let toUnit = (isFrom)? this.unitOptionsRef.to.current.value : this.unitOptionsRef.from.current.value;
+        let fromUnit = (isFrom)? this.unitOptionsRef.from.current.value : newToUnit;
+        let toUnit = (isFrom)? newToUnit : this.unitOptionsRef.from.current.value;
         this.updateUnitValues(fromUnit, value, toUnit, isFrom);
     }
 
@@ -109,8 +116,8 @@ class Home extends Component {
                         {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeQuantity.name===quantity.name} key={quantity.name} onlick={this.selectQuantity}></Quantity>)}
                     </Styled.Quantities>
                     <Styled.QuantityValues>
-                        <UnitValues unitType="from" value={this.state.fromValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.selectUnits}></UnitValues>
-                        <UnitValues unitType="to" value={this.state.toValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.selectUnits} fromUnit={this.state.fromUnit}></UnitValues>
+                        <UnitValues unitType="from" value={this.state.fromValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.unitSelectionHandler}></UnitValues>
+                        <UnitValues unitType="to" value={this.state.toValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.unitSelectionHandler} fromUnit={this.state.fromUnit}></UnitValues>
                     </Styled.QuantityValues>
                 </Styled.Content>
             </Styled.Home>

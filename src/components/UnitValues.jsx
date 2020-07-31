@@ -7,8 +7,8 @@ function UnitValues(props) {
             <Styled.Title>
                 {props.unitType}
             </Styled.Title>
-            <Styled.UnitValue onChange={(event) => props.onValueChange(event)} value={props.value} type="number"/>
-            <Styled.UnitTypes ref={props._ref[props.unitType]} onChange={(event)=>props.onUnitChange(event)}>
+            <Styled.UnitValue ref={props.unitValueRef[props.unitType]} onChange={(event) => props.onValueChange(event)} value={props.value} type="number"/>
+            <Styled.UnitTypes ref={props.unitOptionsRef[props.unitType]} onChange={(event)=>props.onUnitChange(event)}>
                 {props.units.map(unit=> {
                     if(unit !== props.fromUnit)
                         return <option value={unit}>{unit}</option>

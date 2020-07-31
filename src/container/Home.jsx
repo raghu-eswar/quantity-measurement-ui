@@ -9,6 +9,7 @@ class Home extends Component {
         super(props);
         this.state = {  isLoading:true };
         this.unitOptionsRef = {from:React.createRef(), to:React.createRef()};
+        this.unitValueRef = {from:React.createRef(), to:React.createRef()};
     }
 
     componentDidMount() {
@@ -43,8 +44,13 @@ class Home extends Component {
         this.unitOptionsRef["to"].current.selectedIndex = 0;
     }
 
-    selectUnits = () => {
+    selectUnits = (event) => {
         this.setState({fromUnit:this.unitOptionsRef.from.current.value, toUnit:this.unitOptionsRef.to.current.value})
+        let isFrom = event.target.parentElement.id  !== 'from'
+        let value = (isFrom)? this.unitValueRef['from'].current.value : this.unitValueRef['to'].current.value;
+        let fromUnit = (isFrom)? this.unitOptionsRef.from.current.value : this.unitOptionsRef.to.current.value;
+        let toUnit = (isFrom)? this.unitOptionsRef.to.current.value : this.unitOptionsRef.from.current.value;
+        this.updateUnitValues(fromUnit, value, toUnit, isFrom);
     }
 
     updateHistory = () => {
@@ -103,8 +109,8 @@ class Home extends Component {
                         {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeQuantity.name===quantity.name} key={quantity.name} onlick={this.selectQuantity}></Quantity>)}
                     </Styled.Quantities>
                     <Styled.QuantityValues>
-                        <UnitValues unitType="from" value={this.state.fromValue} units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.selectUnits}></UnitValues>
-                        <UnitValues unitType="to" value={this.state.toValue} units={this.state.activeQuantity.units} _ref={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.selectUnits} fromUnit={this.state.fromUnit}></UnitValues>
+                        <UnitValues unitType="from" value={this.state.fromValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.selectUnits}></UnitValues>
+                        <UnitValues unitType="to" value={this.state.toValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.selectUnits} fromUnit={this.state.fromUnit}></UnitValues>
                     </Styled.QuantityValues>
                 </Styled.Content>
             </Styled.Home>

@@ -9,25 +9,28 @@ function History(props) {
                     if(props.records[key].length > 0) {
                     return (<>
                         <Styled.Title>{props.records[key][0].name}</Styled.Title>
+                        <Styled.Heading>
+                            <Styled.Title>from</Styled.Title>
+                            <Styled.Title>to</Styled.Title>
+                        </Styled.Heading>
                         {props.records[key].map(record => {
                             return (<>
                                 <Styled.Record>
                                 <Styled.Cell>
-                                    <Styled.Unit>
-                                        {record.fromUnit}
-                                    </Styled.Unit>
                                     <Styled.Value>
                                         {record.fromValue}
                                     </Styled.Value>
-                                </Styled.Cell>
-                                <Styled.Cell>=</Styled.Cell>
-                                <Styled.Cell>
                                     <Styled.Unit>
-                                        {record.toUnit}
+                                        {record.fromUnit}
                                     </Styled.Unit>
+                                </Styled.Cell>
+                                <Styled.Cell>
                                     <Styled.Value>
                                         {record.toValue}
                                     </Styled.Value>
+                                    <Styled.Unit>
+                                        {record.toUnit}
+                                    </Styled.Unit>
                                 </Styled.Cell>
                                 </Styled.Record>
                             </>)

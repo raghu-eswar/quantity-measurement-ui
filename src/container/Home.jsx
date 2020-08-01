@@ -16,8 +16,9 @@ class Home extends Component {
         this.props.initapp(this.props.quantities, this.updateLoadingState)
     }
 
-    componentDidUpdate() {
-        this.updateHistory()
+    componentDidUpdate(prevState) {
+        if(this.state.fromValue && (prevState.fromValue !== this.state.fromValue || prevState.toValue !== this.state.toValue))
+            this.updateHistory()
     }    
 
     updateLoadingState = () => {
@@ -61,7 +62,13 @@ class Home extends Component {
     }
 
     updateHistory = () => {
-        this.props.updateHistory({name:this.state.activeQuantity.name,fromUnit:this.state.fromUnit, toUnit:this.state.toUnit})        
+        this.props.updateHistory(
+            {name:this.state.activeQuantity.name,
+            fromUnit:this.state.fromUnit, 
+            toUnit:this.state.toUnit,
+            fromValue:this.state.fromValue,
+            toValue:this.state.toValue}
+            )        
     }
 
     unitConversionHandler = (event) => {

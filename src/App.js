@@ -9,16 +9,18 @@ import Api from './service/api'
 
 function App() {
   
-  let history= {}
-  
   const initHistory = (quantities) => {
+    if(!localStorage.getItem('history')) { let history= {}
     quantities.forEach((quantity) => {
     history[quantity.name] = [];
     })
+    localStorage.setItem('history',  JSON.stringify(history));}
   }
 
   const updateHistory = (record) => {
-    history[record.name].push(record);
+    let previousHistory = JSON.parse(localStorage.getItem('history'));
+    previousHistory[record.name].push(record);
+    localStorage.setItem('history', JSON.stringify(previousHistory));
   }
 
   const initApp = (quantities, updateState) => {
@@ -31,6 +33,10 @@ function App() {
             })
   }
 
+  window.onbeforeunload = function() {
+    localStorage.removeItem('history');
+ }
+
   return (
     <Router>
       <Header name={appData.appName} navLinks={appData.navigation}></Header>
@@ -38,7 +44,7 @@ function App() {
         <Home quantities={appData.quantities} initapp={initApp}  updateHistory={updateHistory}></Home>
       </Route>
       <Route path="/history" exact>
-        <History records={history}></History>
+        <History></History>
       </Route>
     </Router> 
   );

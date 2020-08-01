@@ -1,19 +1,20 @@
 import React from 'react'
 import * as Styled from '../styles/history.styled';
 
-function History(props) {
+function History() {
+    let history = JSON.parse(localStorage.getItem('history'));
     return (
         <Styled.History>
             <Styled.Content>
-                {Object.keys(props.records).map((key) => {
-                    if(props.records[key].length > 0) {
+                {Object.keys(history).map((key) => {
+                    if(history[key].length > 0) {
                     return (<>
-                        <Styled.Title>{props.records[key][0].name}</Styled.Title>
+                        <Styled.Title>{history[key][0].name}</Styled.Title>
                         <Styled.Heading>
                             <Styled.Title>from</Styled.Title>
                             <Styled.Title>to</Styled.Title>
                         </Styled.Heading>
-                        {props.records[key].map(record => {
+                        {history[key].map(record => {
                             return (<>
                                 <Styled.Record>
                                 <Styled.Cell>

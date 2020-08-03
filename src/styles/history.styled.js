@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {devices} from './devices'
 
 export const History = styled.div `
     height: 82vh;
@@ -16,6 +17,9 @@ export const Content = styled.div `
     margin-top: 2%;
     display: flex;
     flex-direction: column;
+    @media ${devices.iPad} {
+        width: 90%;
+    }
 `
 
 export const Title = styled.h2 `

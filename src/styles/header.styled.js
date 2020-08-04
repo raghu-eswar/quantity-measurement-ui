@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import {devices} from './devices'
 
 export const Header = styled.header `
     display: flex;
@@ -7,6 +8,16 @@ export const Header = styled.header `
     align-items: center;
     justify-content: flex-end;
     height: 18vh;
+    @media ${devices.mobileM} {
+        height: 25vh;
+    }
+    @media ${devices.mobileS} {
+        height: 20vh;
+        font-size: 1rem;
+    }
+    @media ${devices.tablet}{
+        height: 18vh;
+    }
 `
 export const Nav = styled.nav `
     width: 70%;
@@ -16,10 +27,13 @@ export const Nav = styled.nav `
     justify-content: space-between;
     font-family: Poppins;
     font: icon;
+    @media ${devices.mobileS} {
+        height: 25%;
+        font-size: 1rem;
+    }
 `
 export const Logo = styled.div `
     width: 50%;
-    font-size: 2em;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -30,8 +44,7 @@ export const NavLinks = styled.div `
     text-align: end;
     font-size: 1rem;
 `
-export const NavLink = styled(Link)
-`
+export const NavLink = styled(Link)`
     text-decoration: none;
     color: black;
 `
@@ -44,6 +57,12 @@ export const Article = styled.article `
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
+    @media ${devices.mobileM} {
+       text-align: center;
+    }
+    @media ${devices.mobileS} {
+       padding: 0 1% 0 1%;
+    }
 `
 
 export const Welcome = styled.p `
@@ -52,5 +71,11 @@ export const Welcome = styled.p `
     font-weight: lighter;
     text-transform: capitalize;
     letter-spacing: 1.5px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    @media ${devices.mobileM} {
+       font-size: 1.5rem;
+    }
+    @media ${devices.mobileS} {
+       font-size: 1.3rem;
+    }
 `

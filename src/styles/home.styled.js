@@ -6,16 +6,32 @@ export const Home = styled.main `
     display: flex;
     justify-content: center;
     background: #F5F6FA 0% 0% no-repeat padding-box;
+    @media ${devices.mobileM} {
+        height: 90vh;
+    }
+    @media ${devices.tablet}{
+        height: 82vh;
+    }
+    @media ${devices.mobileS} {
+        height: 80vh;
+    }
 `
 
 export const Content = styled.div `
-    width: 50%;
+    width: 55%;
     height: 55%;
     margin-top: 4%;
     display: flex;
     flex-direction: column;
     @media ${devices.iPad} {
-        width: 90%;
+        width: 80%; 
+    }
+
+    @media ${devices.mobileS} {
+        font-size: 1rem;
+    }
+    @media ${devices.mobileM} {
+        height: 90%;
     }
 `
 
@@ -25,21 +41,50 @@ export const Title = styled.span `
     font-size: medium;
     color: #000000;
     text-transform: uppercase;
-    margin-left: 4%;
+    margin-left: 0;
 `
 
 export const Quantities = styled.div `
-    flex: 3;
-    display: flex;
+    margin: 1vmax 0 1vmax 0;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12vmax, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(12vmax, 1fr));
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
+    column-gap: 2%;
+    row-gap: 10%;
+
+    @media ${devices.iPad} {
+        column-gap: 4%;
+    }
+    @media ${devices.mobileM} {
+        grid-template-columns: repeat(auto-fit, minmax(17vmax, 1fr));
+        margin: 2vmax 0 2vmax 0;
+    }
+    @media ${devices.mobileS} {
+        grid-template-columns: repeat(auto-fit, minmax(15vmax, 1fr));
+        margin: 3vmax 0 3vmax 0;
+    }
 `
 
 export const QuantityValues = styled.div `
-    flex: 2.5;
+    height: 20vh;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    @media ${devices.iPad} {
+        height: 16vh;
+    }
+    @media ${devices.mobileM} {
+        height: 25vh;
+    }
+    @media ${devices.mobileS} {
+        flex-direction: column;
+        align-items: center;
+        height: 35vh;
+    }
+    
 `
 
 const Load = keyframes`

@@ -1,19 +1,22 @@
 import styled from 'styled-components';
+import {devices} from './devices'
 
 export const QuantityName = styled.p `
+    flex: 1;
     opacity: ${props=> props.isActive ? 1: 0.2};
     font-weight: ${props=> props.isActive ? 600: 100};
 `
 
 export const StyledDiv = styled.div `
-    width: 35%;
-    height: 50%;
+    width: 40%;
+    flex: 3;
     background: transparent url(${props=>require(`../images/${props.isActive? props.quantityName+'-hover':props.quantityName}-icon.svg`)}) no-repeat center;   
 `
 
 export const Quantity = styled.div `
-    width: 20%;
-    height: 70%;
+    width: 90%;
+    min-width: 12vmax;
+    min-height: 12vmax;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,5 +41,13 @@ export const Quantity = styled.div `
     }
     &:hover ${StyledDiv} {
         background: transparent url(${props=>require(`../images/${props.quantityName}-hover-icon.svg`)}) no-repeat center;   
+    }
+    @media ${devices.mobileS} {
+        min-width: 15vmax;
+        min-height: 15vmax;
+    }
+    @media ${devices.mobileM} {
+        min-width: 17vmax;
+        min-height: 17vmax;
     }
 `

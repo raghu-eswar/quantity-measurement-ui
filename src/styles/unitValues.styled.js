@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {devices} from './devices'
 
 export const UnitContainer = styled.div `
     width: 35%;
@@ -11,6 +12,13 @@ export const UnitContainer = styled.div `
     font: caption;
     letter-spacing: 0px;
     color: #000000;
+    @media ${devices.iPad} {
+        width: 45%;
+    }
+    @media ${devices.mobileS} {
+        width: 80%;
+        height: 45%;
+    }
 `
 
 export const Title = styled.span `

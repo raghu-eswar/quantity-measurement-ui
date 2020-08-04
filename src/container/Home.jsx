@@ -84,8 +84,8 @@ class Home extends Component {
             Api.getConvertedUnit(fromUnit, value ,toUnit)
             .then(resp => 
                     this.setState({ 
-                    fromValue:(isFrom)? value : resp.data.value.value,
-                    toValue: (isFrom)? resp.data.value.value : value
+                    fromValue:(isFrom)? value :Number.parseFloat(resp.data.value.value).toPrecision(15) ,
+                    toValue: (isFrom)? Number.parseFloat(resp.data.value.value).toPrecision(15) : value
                 })).catch(() => 
                     this.setState({ 
                     fromValue:'',

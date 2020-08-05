@@ -17,7 +17,7 @@ class Home extends Component {
     }
 
     componentDidUpdate(prevState) {
-        if(this.state.fromValue && (prevState.fromValue !== this.state.fromValue || prevState.toValue !== this.state.toValue))
+        if(this.state.fromValue && ((prevState.fromValue !== this.state.fromValue || prevState.toValue !== this.state.toValue) && this.state.fromValue !== '-'))
             this.updateHistory()
     }    
 
@@ -81,15 +81,22 @@ class Home extends Component {
 
     updateUnitValues = (fromUnit, value, toUnit, isFrom) => {
         if(value) {
-            Api.getConvertedUnit(fromUnit, value ,toUnit)
-            .then(resp => 
-                    this.setState({ 
-                    fromValue:(isFrom)? value :Number.parseFloat(resp.data.value.value).toPrecision(15) ,
-                    toValue: (isFrom)? Number.parseFloat(resp.data.value.value).toPrecision(15) : value
-                })).catch(() => 
-                    this.setState({ 
-                    fromValue:'',
-                    toValue:''}))
+            if(value.indexOf('e') === value.length-1 || value === '-') {
+                this.setState({ 
+                    fromValue:(isFrom)? value : '' ,
+                    toValue: (isFrom)? '' : value
+                    })
+            } else {
+                Api.getConvertedUnit(fromUnit, value ,toUnit)
+                .then(resp => 
+                        this.setState({ 
+                        fromValue:(isFrom)? value :Number.parseFloat(resp.data.value.value).toPrecision(15) ,
+                        toValue: (isFrom)? Number.parseFloat(resp.data.value.value).toPrecision(15) : value
+                    })).catch(() => 
+                        this.setState({ 
+                        fromValue:'',
+                        toValue:''}))
+            }
         }
         else {
             this.setState({ 
@@ -123,8 +130,8 @@ class Home extends Component {
                         {this.props.quantities.map(quantity=><Quantity quantity={quantity} isActive={this.state.activeQuantity.name===quantity.name} key={quantity.name} onlick={this.selectQuantity}></Quantity>)}
                     </Styled.Quantities>
                     <Styled.QuantityValues>
-                        <UnitValues unitType="from" value={this.state.fromValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.unitSelectionHandler}></UnitValues>
-                        <UnitValues unitType="to" value={this.state.toValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} onValueChange = {this.unitConversionHandler} onUnitChange={this.unitSelectionHandler} fromUnit={this.state.fromUnit}></UnitValues>
+                        <UnitValues unitType="from" value={this.state.fromValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} activeQuantity={this.state.activeQuantity.name} onValueChange = {this.unitConversionHandler} onUnitChange={this.unitSelectionHandler}></UnitValues>
+                        <UnitValues unitType="to" value={this.state.toValue} units={this.state.activeQuantity.units} unitValueRef={this.unitValueRef} unitOptionsRef={this.unitOptionsRef} activeQuantity={this.state.activeQuantity.name} onValueChange = {this.unitConversionHandler} onUnitChange={this.unitSelectionHandler} fromUnit={this.state.fromUnit}></UnitValues>
                     </Styled.QuantityValues>
                 </Styled.Content>
             </Styled.Home>

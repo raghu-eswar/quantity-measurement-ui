@@ -3,7 +3,6 @@ import * as Styled from '../styles/history.styled';
 
 function History() {
     let history = localStorage.getItem('history');
-    console.log(history);
     if (!history) 
         return <Styled.EmptyHistory>Nothiing to show</Styled.EmptyHistory>
 

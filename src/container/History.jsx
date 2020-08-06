@@ -2,7 +2,15 @@ import React from 'react'
 import * as Styled from '../styles/history.styled';
 
 function History() {
-    let history = JSON.parse(localStorage.getItem('history'));
+    let history = localStorage.getItem('history');
+    console.log(history);
+    if (!history) 
+        return <Styled.EmptyHistory>Nothiing to show</Styled.EmptyHistory>
+
+    history = JSON.parse(history);
+    if (Object.keys(history).map((key) => history[key].length).filter(length => length>0).length === 0) 
+        return <Styled.EmptyHistory>Nothiing to show</Styled.EmptyHistory>
+
     return (
         <Styled.History>
             <Styled.Content>

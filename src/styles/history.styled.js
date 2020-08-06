@@ -91,3 +91,13 @@ export const Unit = styled.span `
 export const Value = styled.span `
    padding-left: 4%;
 `
+
+export const EmptyHistory = styled.p `
+    margin-top: 10%;
+    text-align: center;
+    text-transform: capitalize;
+    font-family: Poppins;
+    font: caption;
+    font-size: 2rem;
+    color: #d3d3d3;
+`
